@@ -1,0 +1,31 @@
+
+workflows:
+  dishly-ios-upload:
+    name: Upload Dishly IPA to App Store Connect
+    instance_type: mac_mini_m2
+    max_build_duration: 30
+
+    integrations:
+      app_store_connect: DishlyAppStore
+
+    environment:
+      vars:
+        GH_TOKEN: $GITHUB_TOKEN
+
+    scripts:
+      - name: Download existing Dishly IPA
+        script: |
+          mkdir -p ipa
+          gh release download dishly-ios-1.0 \
+            --pattern "*.ipa" \
+            --dir ipa
+          test -n "$(find ipa -name '*.ipa' -print -quit)"
+
+    artifacts:
+      - ipa/*.ipa
+
+    publishing:
+      app_store_connect:
+        auth: integration
+        submit_to_testflight: false
+        submit_to_app_store: false
