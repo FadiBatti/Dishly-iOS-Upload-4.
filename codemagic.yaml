@@ -6,7 +6,7 @@ workflows:
     max_build_duration: 30
 
     integrations:
-      app_store_connect: app_store_connect: "Finjanak App Store"
+      app_store_connect: "Finjanak App Store"
 
     environment:
       vars:
