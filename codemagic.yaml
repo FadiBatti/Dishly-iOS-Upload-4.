@@ -8,9 +8,11 @@ workflows:
     integrations:
       app_store_connect: "Finjanak App Store"
 
+   
     environment:
-      vars:
-        GH_TOKEN: $GITHUB_TOKEN
+      groups:
+        - dishly_secrets
+
 
     scripts:
       - name: Download existing Dishly IPA
