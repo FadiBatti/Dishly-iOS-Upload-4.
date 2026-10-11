@@ -19,7 +19,7 @@ workflows:
         script: |
           mkdir -p ipa
           gh release download dishly-ios-1.0 \
-            --pattern "*.ipa" \
+            --pattern "18967504293808-dishly-dishly-ios-5.ipa" \
             --dir ipa
           test -n "$(find ipa -name '*.ipa' -print -quit)"
 
