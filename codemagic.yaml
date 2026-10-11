@@ -6,22 +6,20 @@ workflows:
     max_build_duration: 30
 
     integrations:
-      app_store_connect:  "Finjanak R7"
+      app_store_connect: "Finjanak R7"
 
-   
     environment:
       groups:
         - dishly_secrets
-
 
     scripts:
       - name: Download existing Dishly IPA
         script: |
           mkdir -p ipa
           gh release download dishly-ios-1.0 \
-            --pattern "18967504293808-dishly-dishly-ios-5.ipa" \
+            --pattern "18967504293808-dishly-dishly-ios-6.ipa" \
             --dir ipa
-          test -n "$(find ipa -name '*.ipa' -print -quit)"
+          test -f "ipa/18967504293808-dishly-dishly-ios-6.ipa"
 
     artifacts:
       - ipa/*.ipa
